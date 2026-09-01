@@ -1,0 +1,176 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.container {
+  display: flex;
+}
+/* Left Nav  Styling */
+.leftNav {
+  height: 95vh;
+  width: 250px;
+  flex-shrink: 0;
+  border: 1px solid black;
+  margin: 1rem;
+}
+.chatNav {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+}
+.botName {
+  padding: 1rem;
+}
+.chatOptions {
+  margin-top: 3rem;
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+}
+.chatItems {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  border: 1px solid pink;
+  padding: 0.9rem;
+  cursor: pointer;
+}
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: black;
+  margin-top: auto;
+}
+
+.profile {
+  display: flex;
+  justify-content: space-evenly;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Right Nav Styling */
+.rightNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+  flex: 1;
+  min-width: 0;
+  height: 95vh;
+  margin: 1rem;
+}
+.headerNav {
+  padding: 1rem;
+  border: 1px solid deeppink;
+}
+.chat {
+  border: 1px solid deepskyblue;
+  height: 80vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+  flex-wrap: wrap;
+}
+.resMessage {
+  flex: 1;
+  align-self: flex-start;
+  padding: 1rem;
+  margin: 2rem;
+  border: 1px solid orange;
+}
+.reqMessage {
+  padding: 1rem;
+  margin: 2rem;
+  align-self: flex-end;
+  border: 1px solid dodgerblue;
+}
+.messageBox {
+  display: flex;
+  gap: 2rem;
+}
+input {
+  width: 100%;
+}
+.sendChat {
+  padding: 0.5rem 1.4rem;
+}
+.menuButton,
+.closeButton {
+  display: none;
+}
+
+/* Media Queries Tablet*/
+@media (max-width: 1024px) {
+  .rightNav {
+    flex: 1;
+    min-width: 0;
+  }
+  .leftNav {
+    width: 25%;
+    flex-shrink: 0;
+  }
+}
+/* Media Queries Mobile */
+@media (max-width: 767px) {
+  .closeButton,
+  .menuButton {
+    display: block;
+  }
+  .leftNav {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100vh;
+    margin: 0;
+    z-index: 10;
+  }
+  .leftNav.open {
+    display: block;
+  }
+
+  .rightNav {
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    gap: 0;
+  }
+
+  .headerNav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo {
+    display: inline;
+  }
+
+  .chat {
+    flex: 1;
+    min-height: 0;
+    height: auto;
+    margin: 0;
+  }
+
+  .messageBox {
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  .messageBox input {
+    flex: 1;
+    min-width: 0;
+    width: auto;
+    margin: 0;
+  }
+
+  .sendChat {
+    padding: 0.5rem 1rem;
+    margin: 0;
+  }
+}
