@@ -13,6 +13,7 @@ function Register() {
     name: z.string().min(1, "Name is Required"),
     email: z.string().email("Invalid Email"),
     password: z.string().min(6, "Password must be 6 characters"),
+    // .regex(/[a-z]/, "password must conatins one lowercase"),
   });
   const {
     register,
@@ -69,7 +70,9 @@ function Register() {
                 </div>
               )}
             </div>
-            {serverError && <div className={styles.errorMsg}>{serverError}</div>}
+            {serverError && (
+              <div className={styles.errorMsg}>{serverError}</div>
+            )}
             <button type="submit" className={styles.loginBtn}>
               Create account
             </button>
