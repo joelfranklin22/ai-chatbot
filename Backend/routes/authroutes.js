@@ -32,6 +32,8 @@ router.post("/register", async (req, res) => {
         "my-secret-key",
         { expiresIn: "1h" },
       );
+      console.log(token);
+      
       res.status(200).json({ msg: "Rows Added", token: token });
     }
   } catch (error) {
