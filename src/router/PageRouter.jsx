@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import Chat from "../Pages/Chat";
+import ProtectedRoutes from "../components/ProtectedRoutes";
 
 function PageRouter() {
   return (
@@ -10,7 +11,9 @@ function PageRouter() {
         <Routes>
           <Route path="/" element={<Register />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/chat" element={<Chat />} />
+          <Route element={<ProtectedRoutes />}>
+            <Route path="/chat" element={<Chat />} />
+          </Route>
         </Routes>
       </BrowserRouter>
     </>
