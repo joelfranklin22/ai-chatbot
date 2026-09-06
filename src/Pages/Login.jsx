@@ -29,7 +29,7 @@ function Login() {
           </div>
           <div className={styles.register}>
             <span>No account?</span>
-            <Link to="/chat">Register</Link>
+            <Link to="/">Register</Link>
           </div>
         </div>
       </div>
