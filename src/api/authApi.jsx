@@ -7,3 +7,14 @@ export const addUser = async (name, email, password) => {
     password,
   });
 };
+
+export const checkUser = async (email, password) => {
+  return axios.post(
+    "http://localhost:4000/api/auth/login",
+    {
+      email,
+      password,
+    },
+    { withCredentials: true },
+  );
+};
