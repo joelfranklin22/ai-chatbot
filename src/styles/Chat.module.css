@@ -65,6 +65,10 @@
   padding: 1rem;
   border: 1px solid deeppink;
 }
+.headTitle{
+  display: flex;
+  justify-content: space-between;
+}
 .chat {
   border: 1px solid deepskyblue;
   height: 80vh;
