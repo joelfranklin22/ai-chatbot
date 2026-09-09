@@ -21,9 +21,9 @@ router.post("/login", async (req, res) => {
 
     // if data not exists
     if (rows.length == 0) {
-      res.status(401).json({ msg: "user not exists" });
+      return res.status(401).json({ msg: "user not exists" });
     } else {
-      // if data exists 
+      // if data exists
       try {
         // Compare db password and req body password
         const hashedPassword = rows[0].password;
@@ -44,21 +44,23 @@ router.post("/login", async (req, res) => {
           } catch (error) {
             // token error catch throws here
             console.log(error);
-            res.status(401).json({ msg: "token error" });
+            return res.status(401).json({ msg: "token error" });
           }
         }
         // if password doesnt match
         else {
-          res.status(401).json({ msg: "Password not Match" });
+          return res.status(401).json({ msg: "Password not Match" });
         }
       } catch (error) {
         //   if error in password checking throws catch here
         console.log(error);
+        return res.status(401).json({ msg: "error in db password checking" });
       }
     }
   } catch (error) {
     //   if error in db throws error here
     console.log(error);
+    return res.status(401).json({ msg: "error in db" });
   }
 });
 
