@@ -21,16 +21,6 @@ function Chat() {
                   <i>a</i> Chat
                 </button>
               </li>
-              <li>
-                <button className={styles.chatItems}>
-                  <i>a</i> History
-                </button>
-              </li>
-              <li>
-                <button className={styles.chatItems}>
-                  <i>a</i> Settings
-                </button>
-              </li>
             </ul>
             <div className={styles.divider}></div>
             <div className={styles.profile}>
@@ -48,7 +38,10 @@ function Chat() {
             <div className={styles.menuButton}>
               <button onClick={() => setIsOpen(!isOpen)}>☰</button>
             </div>
-            <p>Chatname</p>
+            <div className={styles.headTitle}>
+              <p>Chatname</p>
+              <i>dark theme</i>
+            </div>
           </header>
           {/* section */}
           <section className={styles.chat}>
