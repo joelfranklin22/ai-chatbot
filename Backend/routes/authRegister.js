@@ -51,6 +51,7 @@ router.post("/register", async (req, res) => {
           msg: "Rows Added",
           accessToken,
         });
+        console.log(accessToken, refreshToken);
       } catch (error) {
         console.log(error);
 
