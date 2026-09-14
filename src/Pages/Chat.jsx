@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 import styles from "../styles/Chat.module.css";
 
 function Chat() {
@@ -59,7 +59,7 @@ function Chat() {
           <footer className="messageFooter">
             <form action="" className={styles.messageBox}>
               <input type="text" name="" id="" placeholder="Type a message" />
-              <button className={styles.sendChat}>Send</button>
+              <button className={styles.sendChat} >Send</button>
             </form>
           </footer>
         </div>
