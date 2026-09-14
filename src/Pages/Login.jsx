@@ -1,19 +1,20 @@
 import { useForm } from "react-hook-form";
 import styles from "../styles/Auth.module.css";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { checkUser } from "../api/authApi";
-import { useState } from "react";
+import { useContext } from "react";
+import AuthContext from "../context/AuthContext";
 
 function Login() {
-  const navigate = useNavigate();
+
+  const { setAccesstokens } = useContext(AuthContext);
 
   const schema = z.object({
     email: z.string().email("Invalid Email"),
     password: z.string().min(6, "Password must be 6 characters"),
   });
-  const [loginMsg, setLoginMsg] = useState(false);
   const {
     register,
     reset,
@@ -26,8 +27,7 @@ function Login() {
       const res = await checkUser(data.email, data.password);
 
       if (res.status == 200) {
-        setLoginMsg(true);
-        navigate("/chat");
+        setAccesstokens(res.data.accessToken);
       }
 
       console.log(res.data);
@@ -71,9 +71,6 @@ function Login() {
                 <div className={styles.errorMsg}>{errors.password.message}</div>
               )}
             </div>
-            {loginMsg && (
-              <div className={styles.loginMsg}>Login SuccessFull</div>
-            )}
             <button type="submit" className={styles.loginBtn}>
               Sign in
             </button>
