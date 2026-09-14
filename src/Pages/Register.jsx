@@ -1,14 +1,16 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "../styles/Auth.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { addUser } from "../api/authApi";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import AuthContext from "../context/AuthContext";
 
 function Register() {
   const [serverError, setServerError] = useState("");
   const [loginMsg, setLoginMsg] = useState(false);
+  const { setAccessTokens } = useContext(AuthContext);
 
   // Form Validation
   const schema = z.object({
@@ -32,14 +34,12 @@ function Register() {
       setServerError("");
 
       const res = await addUser(data.name, data.email, data.password);
-      console.log(res.data.token);
-      localStorage.setItem("token", res.data.token);
-      setLoginMsg(true);
-      setTimeout(() => {
-        navigate("/chat");
-        reset();
-      }, 700);
 
+      setLoginMsg(true);
+      setAccessTokens(res.data.accessToken);
+      navigate("/chat");
+      reset();
+      
     } catch (error) {
       setServerError(error.response?.data?.msg || "Something went wrong");
     }
