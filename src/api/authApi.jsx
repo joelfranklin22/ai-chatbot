@@ -15,6 +15,5 @@ export const checkUser = async (email, password) => {
       email,
       password,
     },
-    { withCredentials: true },
   );
 };
