@@ -5,9 +5,11 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <>
-      <AuthProvider>
+      <BrowserRouter>
+        <AuthProvider>
           <PageRouter />
-      </AuthProvider>
+        </AuthProvider>
+      </BrowserRouter>
     </>
   );
 }
