@@ -36,10 +36,11 @@ function Register() {
       const res = await addUser(data.name, data.email, data.password);
 
       setLoginMsg(true);
+      console.log(res.data.accessToken);
+
       setAccessTokens(res.data.accessToken);
       navigate("/chat");
       reset();
-      
     } catch (error) {
       setServerError(error.response?.data?.msg || "Something went wrong");
     }
