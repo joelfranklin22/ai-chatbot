@@ -4,7 +4,7 @@ import AuthContext from "../context/AuthContext";
 
 function ProtectedRoutes() {
   const { accessTokens } = useContext(AuthContext);
-
+  
   if (!accessTokens) return <Navigate to={"/login"} />;
   return <Outlet />;
 }
