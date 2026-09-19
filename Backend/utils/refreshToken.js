@@ -10,7 +10,7 @@ router.post("/generate", (req, res) => {
   
   if (!refreshTokens) return res.status(401).json({ msg: "no refresh tokens" });
 
-  jwt.verify(refreshTokens, "refreshToken", (err, decoded) => {
+  jwt.verify(refreshTokens, "Happy", (err, decoded) => {
     if (err) return res.status(401).json({ msg: "tokens expired" });
 
     const accessToken = jwt.sign({ userId: decoded.userId }, "Happy", {
