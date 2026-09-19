@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import styles from "../styles/Auth.module.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import z from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { checkUser } from "../api/authApi";
@@ -8,8 +8,8 @@ import { useContext } from "react";
 import AuthContext from "../context/AuthContext";
 
 function Login() {
-
-  const { setAccesstokens } = useContext(AuthContext);
+  const { setAccessTokens } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const schema = z.object({
     email: z.string().email("Invalid Email"),
@@ -27,7 +27,8 @@ function Login() {
       const res = await checkUser(data.email, data.password);
 
       if (res.status == 200) {
-        setAccesstokens(res.data.accessToken);
+        setAccessTokens(res.data.accessToken);
+        navigate("/chat");
       }
 
       console.log(res.data);
