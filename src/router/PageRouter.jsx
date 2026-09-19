@@ -5,12 +5,13 @@ import Chat from "../Pages/Chat";
 import ProtectedRoutes from "../components/ProtectedRoutes";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import AuthContext from "../context/AuthContext";
 
 function PageRouter() {
   const navigate = useNavigate();
-  const { accessToken, setAccessTokens } = useContext(AuthContext);
+  const { accessTokens, setAccessTokens } = useContext(AuthContext);
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     async function checkTokens() {
       try {
@@ -21,18 +22,20 @@ function PageRouter() {
         );
         setAccessTokens(res.data.accessToken);
         console.log(res);
-        console.log(accessToken);
+        console.log(accessTokens);
 
         console.log(res.data.tokens);
       } catch (error) {
-        setTimeout(() => {
-          navigate("/login");
-        }, 3000);
+        console.log(error.response.data.msg);
+
         console.log("login again to get tokens", error);
+      } finally {
+        setLoading(false);
       }
     }
     checkTokens();
   }, []);
+  if (loading) return <div>Loading....</div>;
   return (
     <>
       <Routes>
