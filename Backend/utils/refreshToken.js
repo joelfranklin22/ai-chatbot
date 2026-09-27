@@ -14,7 +14,7 @@ router.post("/generate", (req, res) => {
     if (err) return res.status(401).json({ msg: "tokens expired" });
 
     const accessToken = jwt.sign({ userId: decoded.userId }, "Happy", {
-      expiresIn: "1h",
+      expiresIn: "2h",
     });
     res.json({ accessToken });
   });
